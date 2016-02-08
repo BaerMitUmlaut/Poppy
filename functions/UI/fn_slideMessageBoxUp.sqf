@@ -30,7 +30,7 @@ private _height = (ctrlPosition (_display displayCtrl 0)) select 3;
         _ctrl ctrlCommit 0;
 
         false
-    } count [0, 10, 11, 12, 20, 21];
+    } count [0, 10, 11, 12, 20, 21, 22, 23, 24];
 
     if (_targetHeight == _newHeight) then {
         [_pfhID] call CBA_fnc_removePerFrameHandler;

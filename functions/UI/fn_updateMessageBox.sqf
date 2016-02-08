@@ -6,16 +6,22 @@ params ["_display"];
 
 if (GVAR(logIndex) > 0) then {
     (_display displayCtrl 10) ctrlShow true;
+    (_display displayCtrl 22) ctrlShow true;
 } else {
     (_display displayCtrl 10) ctrlShow false;
+    (_display displayCtrl 22) ctrlShow false;
 };
 
 if (count GVAR(log) - 1 > GVAR(logIndex)) then {
     (_display displayCtrl 11) ctrlShow true;
     (_display displayCtrl 12) ctrlShow false;
+    (_display displayCtrl 23) ctrlShow true;
+    (_display displayCtrl 24) ctrlShow false;
 } else {
     (_display displayCtrl 11) ctrlShow false;
     (_display displayCtrl 12) ctrlShow true;
+    (_display displayCtrl 23) ctrlShow false;
+    (_display displayCtrl 24) ctrlShow true;
 };
 
 // - Message ----------------------------------------------
