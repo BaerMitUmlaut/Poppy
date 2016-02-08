@@ -20,11 +20,15 @@ for "_i" from 0 to (_arrayCount - 1) do {
         };
         _i = _i + 1;
     } else {
-        switch (true) do {
-            case (_unit canAddItemToUniform _currentItem):  { _unit addItemToUniform _currentItem };
-            case (_unit canAddItemToBackpack _currentItem): { _unit addItemToBackpack _currentItem };
-            case (_unit canAddItemToVest _currentItem):     { _unit addItemToVest _currentItem };
-            default { GVAR(delayedItems) pushBack _currentItem };
+        if (_currentItem isKindOf ["ItemRadio", configFile >> "CfgWeapons"]) then {
+            [_unit, [_currentItem]] call FUNC(replaceRadio);
+        } else {
+            switch (true) do {
+                case (_unit canAddItemToUniform _currentItem):  { _unit addItemToUniform _currentItem };
+                case (_unit canAddItemToBackpack _currentItem): { _unit addItemToBackpack _currentItem };
+                case (_unit canAddItemToVest _currentItem):     { _unit addItemToVest _currentItem };
+                default { GVAR(delayedItems) pushBack _currentItem };
+            };
         };
     };
 };
