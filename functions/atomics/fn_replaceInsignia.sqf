@@ -3,6 +3,7 @@ params ["_unit", "_array"];
 private ["_insignia", "_config"];
 
 _insignia = _array call BIS_fnc_selectRandom;
+if (_insignia = "") exitWith {};
 _config = configNull;
 
 if (isClass (missionConfigFile >> "CfgUnitInsignia" >> _insignia)) then {

@@ -4,4 +4,6 @@ private ["_gps"];
 
 _gps = _array call BIS_fnc_selectRandom;
 _unit unlinkItem "ItemGPS";
-_unit linkItem _gps;
+if (_gps != "") then {
+    _unit linkItem _gps;
+};

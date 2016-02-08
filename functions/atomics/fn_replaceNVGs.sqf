@@ -5,5 +5,7 @@ private ["_nvgs"];
 _nvgs = _array call BIS_fnc_selectRandom;
 if (_nvgs != hmd _unit) then {
     _unit unlinkItem (hmd _unit);
-    _unit linkItem _nvgs;
+    if (_nvgs != "") then {
+        _unit linkItem _nvgs;
+    };
 };

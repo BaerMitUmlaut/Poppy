@@ -4,4 +4,6 @@ private ["_compass"];
 
 _compass = _array call BIS_fnc_selectRandom;
 _unit unlinkItem "ItemCompass";
-_unit linkItem _compass;
+if (_compass != "") then {
+    _unit linkItem _compass;
+};

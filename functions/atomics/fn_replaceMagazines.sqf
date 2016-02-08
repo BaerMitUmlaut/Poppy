@@ -6,6 +6,8 @@ _arrayCount = count _array;
 
 { _unit removeMagazineGlobal _x; } count (magazines _unit);
 
+if (_array isEqualTo [""]) exitWith {};
+
 for "_i" from 0 to (_arrayCount - 1) do {
     _currentItem = _array select _i;
 

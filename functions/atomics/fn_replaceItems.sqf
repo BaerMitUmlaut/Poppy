@@ -3,8 +3,8 @@ params ["_unit", "_array"];
 private ["_arrayCount", "_currentItem"];
 
 _arrayCount = count _array;
-
 { _unit removeItem _x; } count (items _unit);
+if (_array isEqualTo [""]) exitWith {};
 
 for "_i" from 0 to (_arrayCount - 1) do {
     _currentItem = _array select _i;
