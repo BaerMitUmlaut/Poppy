@@ -8,3 +8,5 @@
 #define QGVAR(var) QUOTE(GVAR(var))
 #define FUNC(var) TRIPLES(PREFIX,fnc,var)
 #define QFUNC(var) QUOTE(FUNC(var))
+
+#define VERSION "0.7.0"
