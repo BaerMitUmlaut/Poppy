@@ -5,6 +5,16 @@ if (!hasInterface) exitWith {};
 
 GVAR(log) = [];
 
+// - Setup checks -----------------------------------------
+if !(isClass (missionConfigFile >> "RscPoppyMessageBox")
+    && isClass (missionConfigFile >> "CfgPoppy")) exitWith {
+    hint parseText ("<t color='#cf1226' size='2'>Warning</t><br />"
+        + """Poppy.cfg"" was not included in your description.ext. "
+        + "Please go through the setup instructions again to check "
+        + "how to setup Poppy properly.<br /><br />"
+        + "Because of this error, Poppy will not work properly and "
+        + "will now shutdown.");
+};
 _config = missionConfigFile >> "CfgLoadouts";
 if !(isClass _config) exitWith {
     ["Poppy could not find your loadout config."] call FUNC(logError);
@@ -12,6 +22,7 @@ if !(isClass _config) exitWith {
     player addAction ["Configure Loadouts", FUNC(showArsenal), [], 0, false, true];
 };
 
+// - Applying loadouts ------------------------------------
 _units = playableUnits;
 _units append switchableUnits;
 {
@@ -37,6 +48,7 @@ _units append switchableUnits;
     false
 } count _units;
 
+// - Misc -------------------------------------------------
 [] call FUNC(createBriefingEntry);
 if (!isMultiplayer) then {
     player addAction ["Configure Loadouts", FUNC(showArsenal), [], 0, false, true];
