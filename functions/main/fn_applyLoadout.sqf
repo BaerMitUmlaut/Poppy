@@ -8,25 +8,6 @@ if (_loadConfig) then {
     _config = missionConfigFile >> "CfgLoadouts" >> _loadout;
 };
 
-_loadoutIndexArray = [
-    /* - Containers ------------------ */
-    "uniform", "vest", "backpack",
-
-    /* - Items ----------------------- */
-    "magazines", "items",
-
-    /* - Gear ------------------------ */
-    "binoculars", "compass", "goggles",
-    "gps", "headgear", "map",
-    "nvgs", "radio", "watch",
-
-    /* - Weapons --------------------- */
-    "primary", "secondary", "launcher",
-
-    /* - Special --------------------- */
-    "insignia"
-];
-
 GVAR(delayedItems) = [];
 {
     _function = missionNamespace getVariable (QUOTE(TRIPLES(PREFIX,fnc,replace)) + _x);
@@ -37,7 +18,7 @@ GVAR(delayedItems) = [];
     } else {
         [_unit, _loadout select _forEachIndex] call _function;
     };
-} forEach _loadoutIndexArray;
+} forEach LOADOUT_INDEXES;
 
 // Delayed items
 {

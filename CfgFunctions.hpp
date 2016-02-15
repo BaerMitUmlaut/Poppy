@@ -18,6 +18,7 @@ class Poppy {
         class handleArsenalExit {};
         class handleArsenalInit {};
         class showArsenal {};
+        class simplifyLoadout {};
     };
     class atomics {
         file = "Poppy\functions\atomics";

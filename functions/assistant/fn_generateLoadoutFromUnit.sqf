@@ -25,4 +25,4 @@ _compass = ""; _gps = ""; _map = ""; _radio = ""; _watch = "";
     [hmd _unit], [_radio], [_watch],
     [primaryWeapon _unit] + primaryWeaponItems _unit, [handgunWeapon _unit] + handgunItems _unit, [secondaryWeapon _unit] + secondaryWeaponItems _unit,
     [_unit getVariable ["bis_fnc_setUnitInsignia_class", ""]]
-]
+] call FUNC(simplifyLoadout)

@@ -10,3 +10,21 @@
 #define QFUNC(var) QUOTE(FUNC(var))
 
 #define VERSION "0.7.0"
+
+/*
+    Loadout Indexes
+    Defines the structure of any loadout array. Order:
+    -Containers
+    -Items
+    -Gear
+    -Weapons
+    -Special
+*/
+#define LOADOUT_INDEXES [ \
+    "uniform", "vest", "backpack", \
+    "magazines", "items", \
+    "binoculars", "compass", "goggles", \
+    "gps", "headgear", "map", \
+    "nvgs", "radio", "watch", \
+    "primary", "secondary", "launcher", \
+    "insignia"]
