@@ -49,7 +49,10 @@ _units append switchableUnits;
 } count _units;
 
 // - Misc -------------------------------------------------
-[] call FUNC(createBriefingEntry);
+if (getNumber (missionConfigFile >> "CfgPoppy" >> "showLoadoutInBriefing") == 1) then {
+    [] call FUNC(createBriefingEntry);
+};
+
 if (!isMultiplayer) then {
     player addAction ["Configure Loadouts", FUNC(showArsenal), [], 0, false, true];
 };
