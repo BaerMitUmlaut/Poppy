@@ -9,7 +9,7 @@
 #define FUNC(var) TRIPLES(PREFIX,fnc,var)
 #define QFUNC(var) QUOTE(FUNC(var))
 
-#define VERSION "0.7.0"
+#define VERSION "0.9.0"
 
 /*
     Loadout Indexes
