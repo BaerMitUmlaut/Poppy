@@ -10,9 +10,13 @@ class Poppy {
     };
     class assistant {
         file ="Poppy\functions\assistant";
+        class applyCommonLoadoutDiff {};
         class exportAsConfig {};
         class generateLoadoutFromConfig {};
         class generateLoadoutFromUnit {};
+        class handleArsenalClassChanged {};
+        class handleArsenalExit {};
+        class handleArsenalInit {};
         class showArsenal {};
     };
     class atomics {
