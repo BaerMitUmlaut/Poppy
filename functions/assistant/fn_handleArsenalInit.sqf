@@ -14,7 +14,9 @@ _cmbClass ctrlCommit 0;
 
 _availableClasses = [];
 {
-    _availableClasses pushBack (typeOf _x);
+    if (side _x == side player) then {
+        _availableClasses pushBack (typeOf _x);
+    };
     false
 } count switchableUnits;
 _availableClasses = _availableClasses arrayIntersect _availableClasses;
@@ -25,7 +27,9 @@ if (isNil QGVAR(availableClasses)) then {
 
     GVAR(classLoadoutArrays) = [[GVAR(availableClasses) select 0] call FUNC(generateLoadoutFromConfig)];
     {
-        GVAR(classLoadoutArrays) set [GVAR(availableClasses) find (typeOf _x), [_x] call FUNC(generateLoadoutFromUnit)];
+        if (side _x == side player) then {
+            GVAR(classLoadoutArrays) set [GVAR(availableClasses) find (typeOf _x), [_x] call FUNC(generateLoadoutFromUnit)];
+        };
         false
     } count switchableUnits;
 };
