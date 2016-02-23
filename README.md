@@ -33,20 +33,28 @@ Poppy has a few additonal features which are available for more advanced users:
 
 ### Setup
 The following steps describe how to include Poppy into your mission:
+
 1. Download the latest version of Poppy from the
    [releases page](https://github.com/BaerMitUmlaut/Poppy/releases).
-2. Open your mission's folder, usually found at  
-   `MyDocuments\Arma 3 - Other Profiles\<profile name>\missions\<mission name>.<map name>`.
+2. Open your mission's folder, usually found at
+
+    ```
+    MyDocuments\Arma 3 - Other Profiles\<profile name>\missions\<mission name>.<map name>`.
+    ```
+    
 3. Copy the Poppy folder into your mission's folder.
 4. If you haven't already, create a `description.ext` file in your mission's
    folder. Add the following lines to it:
+
     ```
     #include "Poppy\CfgPoppy.hpp"
     class CfgFunctions {
         #include "W_FRAMEWORK\CfgFunctions.hpp"
     };
     ```
+
 5. Your folder structure should now look like this:
+
     ```
     <mission name>.<map name>
     ├── Poppy
@@ -60,6 +68,7 @@ The following steps describe how to include Poppy into your mission:
     ├── description.ext
     └── mission.sqm
     ```
+
    If there are differences between the above folder structure and your folder
    structure, fix them now or your game might crash (thanks BI).
 6. If you have your mission already open in the editor, reopen it so it
@@ -68,6 +77,7 @@ The following steps describe how to include Poppy into your mission:
 ### Creating basic loadouts
 In this section you will learn how to create loadouts from scratch without any
 technical knowledge about Poppy. Simply follow these steps:
+
 1. Place down all playable units you want to have in your mission and make sure
    there is one unit marked as player. Note that Poppy will ignore any
    non-playable/non-player units.
