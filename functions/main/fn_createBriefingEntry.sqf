@@ -22,19 +22,17 @@ _diaryRecord = "";
 _diaryRecord = _diaryRecord + "<br />";
 
 {
-    if !(_x in ["Throw", "Put"] || {_x isKindOf "Binocular"}) then {
-        _currentMagazine = _x;
-        _picture = getText (configFile >> "CfgMagazines" >> _currentMagazine >> "picture");
-        if (_picture find "." == -1) then {
-            _picture = _picture + ".paa";
-        };
-
-        _diaryRecord = _diaryRecord + "<br /><img image="""
-                     + _picture
-                     + """ width=30 height=30 />"
-                     + "<font size=15> " + (getText (configFile >> "CfgMagazines" >> _currentMagazine >> "displayName"))
-                     + " x " + str ({_x == _currentMagazine} count (magazines player)) + "</font>";
+    _currentMagazine = _x;
+    _picture = getText (configFile >> "CfgMagazines" >> _currentMagazine >> "picture");
+    if (_picture find "." == -1) then {
+        _picture = _picture + ".paa";
     };
+
+    _diaryRecord = _diaryRecord + "<br /><img image="""
+                 + _picture
+                 + """ width=30 height=30 />"
+                 + "<font size=15> " + (getText (configFile >> "CfgMagazines" >> _currentMagazine >> "displayName"))
+                 + " x " + str ({_x == _currentMagazine} count (magazines player)) + "</font>";
     false
 } count ((magazines player) arrayIntersect (magazines player));
 
