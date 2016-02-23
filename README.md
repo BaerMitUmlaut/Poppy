@@ -40,26 +40,26 @@ The following steps describe how to include Poppy into your mission:
 3. Copy the Poppy folder into your mission's folder.
 4. If you haven't already, create a `description.ext` file in your mission's
    folder. Add the following lines to it:
-   ```
-   #include "Poppy\CfgPoppy.hpp"
-   class CfgFunctions {
-       #include "W_FRAMEWORK\CfgFunctions.hpp"
-   };
-   ```
+    ```
+    #include "Poppy\CfgPoppy.hpp"
+    class CfgFunctions {
+        #include "W_FRAMEWORK\CfgFunctions.hpp"
+    };
+    ```
 5. Your folder structure should now look like this:
-   ```
-   <mission name>.<map name>
-   ├── Poppy
-   │   ├── functions
-   │   │   └── ...
-   │   ├── UI
-   │   │   └── ...
-   │   ├── CfgFunctions.hpp
-   │   ├── CfgPoppy.hpp
-   │   └── Dialog.hpp
-   ├── description.ext
-   └── mission.sqm
-   ```
+    ```
+    <mission name>.<map name>
+    ├── Poppy
+    │   ├── functions
+    │   │   └── ...
+    │   ├── UI
+    │   │   └── ...
+    │   ├── CfgFunctions.hpp
+    │   ├── CfgPoppy.hpp
+    │   └── Dialog.hpp
+    ├── description.ext
+    └── mission.sqm
+    ```
    If there are differences between the above folder structure and your folder
    structure, fix them now or your game might crash (thanks BI).
 6. If you have your mission already open in the editor, reopen it so it
