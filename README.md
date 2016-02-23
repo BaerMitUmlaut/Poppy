@@ -49,7 +49,7 @@ The following steps describe how to include Poppy into your mission:
     ```
     #include "Poppy\CfgPoppy.hpp"
     class CfgFunctions {
-        #include "W_FRAMEWORK\CfgFunctions.hpp"
+        #include "Poppy\CfgFunctions.hpp"
     };
     ```
 
