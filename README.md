@@ -91,8 +91,8 @@ technical knowledge about Poppy. Simply follow these steps:
    next to it. This will show what unit type you are currently editing. If you
    just opened up the arsenal it will say "CommonBlufor" or "CommonOpfor" and
    so on. When you edit this "common" loadout, any changes you make will be
-   applied to all units. This is extremly useful for defining the uniform all
-   units use.
+   applied to all units. This is extremly useful for defining the uniform,
+   vest or weapon (almost) all of your units use.
 5. You should now select the loadout that is almost the same for all units.
    This will most likely include the uniform, the vest, grenades, medical gear
    and so on.
@@ -100,7 +100,7 @@ technical knowledge about Poppy. Simply follow these steps:
    is shown in the box above.
 7. Note that items and magazines might have been resorted in your vest, uniform
    and backback. The amount of items and magazines however will remain the
-   same.
+   same as in the common loadout.
 8. Once you have equipped all units, simply close the arsenal. Poppy will show
    a message in the bottom right, informing you that the loadout has been
    copied to your clipboard.
@@ -108,10 +108,11 @@ technical knowledge about Poppy. Simply follow these steps:
    press Ctrl + V to paste the loadout. Make sure to save the file.
 10. Reopen your mission in the editor and hit preview again. All playable units
     will now have the loadouts you created earlier.
-11. If you want to change something about your loadouts, you can select the
-    "Configure loadouts" option in your action menu at any point. However, you
-    need to make sure you ovewrite any loadout configs instead of just adding
-    the config below the old one.
+
+If you want to change something about your loadouts, you can select the
+"Configure loadouts" option in your action menu at any point. However, you need
+to make sure you ovewrite any loadout configs instead of just adding the config
+below the old one.
 
 ### Loadouts for advanced users
 Poppy uses a loadout config. This means you will need to create some very basic
@@ -165,7 +166,7 @@ There are a few special entries:
   Same as *primary*.
 - **magazines[]**  
   Magazines does not support randomness for obvious reasons. Additionally, you
-  can simplify your loadouts by using
+  can simplify your loadouts by using  
   `..., <magazine class name>, <amount of magazines>,...`.
 - **items[]**  
   Same as *magazines*.
