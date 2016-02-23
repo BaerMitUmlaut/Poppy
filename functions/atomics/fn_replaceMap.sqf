@@ -2,7 +2,7 @@
 params ["_unit", "_array"];
 private ["_map"];
 
-_map = _array call BIS_fnc_selectRandom;
+_map = selectRandom _array;
 _unit unlinkItem "ItemMap";
 if (_map != "") then {
     _unit linkItem _map;

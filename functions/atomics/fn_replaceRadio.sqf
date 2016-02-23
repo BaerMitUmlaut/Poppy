@@ -2,7 +2,7 @@
 params ["_unit", "_array"];
 private ["_radio", "_findPos"];
 
-_radio = _array call BIS_fnc_selectRandom;
+_radio = selectRandom _array;
 
 _findPos = _radio find "ACRE";
 if (_findPos != -1) then {

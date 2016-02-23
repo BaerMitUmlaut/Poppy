@@ -2,7 +2,7 @@
 params ["_unit", "_array"];
 private ["_gps"];
 
-_gps = _array call BIS_fnc_selectRandom;
+_gps = selectRandom _array;
 _unit unlinkItem "ItemGPS";
 if (_gps != "") then {
     _unit linkItem _gps;

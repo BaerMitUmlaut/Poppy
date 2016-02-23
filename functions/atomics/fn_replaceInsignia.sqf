@@ -2,7 +2,7 @@
 params ["_unit", "_array"];
 private ["_insignia", "_config"];
 
-_insignia = _array call BIS_fnc_selectRandom;
+_insignia = selectRandom _array;
 if (_insignia == "") exitWith {};
 _config = configNull;
 

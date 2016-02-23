@@ -15,11 +15,10 @@ _cmbClass ctrlCommit 0;
 _availableClasses = [];
 {
     if (side _x == side player) then {
-        _availableClasses pushBack (typeOf _x);
+        _availableClasses pushBackUnique (typeOf _x);
     };
     false
 } count switchableUnits;
-_availableClasses = _availableClasses arrayIntersect _availableClasses;
 
 if (isNil QGVAR(availableClasses)) then {
     GVAR(availableClasses) = [[side player] call FUNC(getSideConfig)];

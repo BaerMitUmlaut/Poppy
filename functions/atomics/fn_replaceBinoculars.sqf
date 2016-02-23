@@ -2,7 +2,7 @@
 params ["_unit", "_array"];
 private ["_binoculars"];
 
-_binoculars = _array call BIS_fnc_selectRandom;
+_binoculars = selectRandom _array;
 if (_binoculars != binocular _unit) then {
     _unit unlinkItem (binocular _unit);
     if (_binoculars != "") then {
