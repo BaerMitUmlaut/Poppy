@@ -23,6 +23,7 @@ The following features are supported by Poppy by default:
 - JIP compatibility
 - Full ACRE and TFAR compatibility
 - Automatic distribution of long range radios with ACRE (coming soon)
+- Automatic 343 channel selection with ACRE
 
 Poppy has a few additonal features which are available for more advanced users:
 - Loadout randomization
