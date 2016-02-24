@@ -23,7 +23,7 @@ The following features are supported by Poppy by default:
 - JIP compatibility
 - Full ACRE and TFAR compatibility
 - Automatic distribution of long range radios with ACRE (coming soon)
-- Automatic 343 channel selection with ACRE
+- Automatic 343 channel selection with ACRE (coming soon)
 
 Poppy has a few additonal features which are available for more advanced users:
 - Loadout randomization
@@ -157,13 +157,11 @@ There are a few special entries:
 - **primary[]**  
   Primary takes a special format to support attachments:  
   `{"weapon", "attachment", "attachment", "attachment"}`  
-  Multiple of these subarrays are supported. You only need need to fill this
+  Multiple of these subarrays are supported. You only need to fill this
   array with the attachment slots you use.
 - **secondary[]**  
   Same as *primary*.
 - **launcher[]**  
-  Same as *primary*.
-- **secondary[]**  
   Same as *primary*.
 - **magazines[]**  
   Magazines does not support randomness for obvious reasons. Additionally, you
