@@ -6,6 +6,7 @@ class Poppy {
         class createBriefingEntry {};
         class getSideConfig {};
         class logError {};
+        class logInfo {};
         class logWarning {};
     };
     class assistant {

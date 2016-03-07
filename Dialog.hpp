@@ -132,6 +132,6 @@ class RscPoppyMessageBox {
         idc = 12;
         x = safeZoneX + safeZoneW - 0.03 * 2;
         y = safeZoneY + safeZoneH + 0.02;
-        onButtonClick = "(ctrlParent (_this select 0)) closeDisplay 1";
+        onButtonClick = "Poppy_log = []; (ctrlParent (_this select 0)) closeDisplay 1";
     };
 };

@@ -17,5 +17,5 @@ if (GVAR(cmbClassLastIndex) == 0) then {
 } count switchableUnits;
 
 [] call FUNC(exportAsConfig);
-GVAR(log) = [["Info", "Your new loadout config has been copied to your clipboard, simply paste it into your description.ext and reload your mission."]];
+["Your new loadout config has been copied to your clipboard, simply paste it into your description.ext and reload your mission."] call FUNC(logInfo);
 [] spawn FUNC(showMessageBox);
