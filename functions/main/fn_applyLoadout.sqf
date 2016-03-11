@@ -20,6 +20,11 @@ GVAR(delayedItems) = [];
     };
 } forEach LOADOUT_INDEXES;
 
+if (GVAR(usesACRE)) then {
+    [_unit] spawn FUNC(setupRadios);
+    [_unit] call FUNC(applyRadioLoadout);
+};
+
 // Delayed items
 {
     if (_unit canAdd _x) then {

@@ -11,6 +11,13 @@ class Poppy {
         class logInfo {};
         class logWarning {};
     };
+    class ACRE {
+        file ="Poppy\functions\ACRE";
+        class addLRRadios {};
+        class applyRadioLoadout {};
+        class findGroupChannel {};
+        class setupRadios {};
+    };
     class assistant {
         file ="Poppy\functions\assistant";
         class applyCommonLoadoutDiff {};
