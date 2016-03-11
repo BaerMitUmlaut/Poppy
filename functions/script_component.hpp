@@ -20,11 +20,12 @@
     -Weapons
     -Special
 */
+
 #define LOADOUT_INDEXES [ \
     "uniform", "vest", "backpack", \
     "magazines", "items", \
     "binoculars", "compass", "goggles", \
     "gps", "headgear", "map", \
-    "nvgs", "radio", "watch", \
+    "nvgs", "watch", \
     "primary", "secondary", "launcher", \
     "insignia"]
