@@ -4,7 +4,7 @@ private ["_diaryRecord", "_picture", "_currentMagazine"];
 _diaryRecord = "";
 
 {
-    if !(_x in ["Throw", "Put"] || {_x isKindOf "Binocular"}) then {
+    if !(_x in ["Throw", "Put"] || {_x isKindOf ["Binocular", configFile >> "CfgWeapons"]}) then {
         _picture = getText (configFile >> "CfgWeapons" >> _x >> "picture");
         if (_picture find "." == -1) then {
             _picture = _picture + ".paa";
