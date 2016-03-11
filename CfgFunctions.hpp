@@ -1,7 +1,9 @@
 class Poppy {
     class main {
         file = "Poppy\functions\main";
-        class postInit { postInit = 1; };
+        class preInit { preInit = 1; };
+        class postInitProxy { postInit = 1; };
+        class postInit {};
         class applyLoadout {};
         class createBriefingEntry {};
         class getSideConfig {};

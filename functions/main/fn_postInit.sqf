@@ -3,8 +3,6 @@ private ["_config", "_units", "_className", "_sideConfig"];
 
 if (!hasInterface) exitWith {};
 
-GVAR(log) = [];
-
 // - Setup checks -----------------------------------------
 if !(isClass (missionConfigFile >> "RscPoppyMessageBox")
     && isClass (missionConfigFile >> "CfgPoppy")) exitWith {
@@ -18,7 +16,7 @@ if !(isClass (missionConfigFile >> "RscPoppyMessageBox")
 _config = missionConfigFile >> "CfgLoadouts";
 if !(isClass _config) exitWith {
     ["Poppy could not find your loadout config."] call FUNC(logError);
-    [] call FUNC(showMessageBox);
+    [] spawn FUNC(showMessageBox);
     player addAction ["Configure Loadouts", FUNC(showArsenal), [], 0, false, true];
 };
 
@@ -31,7 +29,7 @@ _units append switchableUnits;
         _sideConfig = [side _x] call FUNC(getSideConfig);
 
         if (isClass (_config >> _className)) then {
-            if !(_className isKindOf [_sideConfig, _config]) then { //(configName (inheritsFrom (_config >> _className)) != _sideConfig) then {
+            if !(_className isKindOf [_sideConfig, _config]) then {
                 ["The loadout for """ + _className + """ does not inherit from """ + _sideConfig + """."] call FUNC(logWarning);
             };
             [_x, _className] call FUNC(applyLoadout);
@@ -58,5 +56,5 @@ if (!isMultiplayer) then {
 };
 
 if (count GVAR(log) > 0) then {
-    [] call FUNC(showMessageBox);
+    [] spawn FUNC(showMessageBox);
 };
