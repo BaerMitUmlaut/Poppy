@@ -12,10 +12,10 @@ for "_i" from 0 to (_arrayCount - 1) do {
     if ((_i + 1 < _arrayCount) && {typeName (_array select (_i + 1)) == "SCALAR"}) then {
         for "_j" from 1 to (_array select (_i + 1)) do {
             switch (true) do {
+                case !(_unit canAdd _currentItem):              { GVAR(delayedItems) pushBack _currentItem };
                 case (_unit canAddItemToUniform _currentItem):  { _unit addItemToUniform _currentItem };
                 case (_unit canAddItemToBackpack _currentItem): { _unit addItemToBackpack _currentItem };
                 case (_unit canAddItemToVest _currentItem):     { _unit addItemToVest _currentItem };
-                default { GVAR(delayedItems) pushBack _currentItem };
             };
         };
         _i = _i + 1;
@@ -24,10 +24,10 @@ for "_i" from 0 to (_arrayCount - 1) do {
             [_unit, [_currentItem]] call FUNC(replaceRadio);
         } else {
             switch (true) do {
+                case !(_unit canAdd _currentItem):              { GVAR(delayedItems) pushBack _currentItem };
                 case (_unit canAddItemToUniform _currentItem):  { _unit addItemToUniform _currentItem };
                 case (_unit canAddItemToBackpack _currentItem): { _unit addItemToBackpack _currentItem };
                 case (_unit canAddItemToVest _currentItem):     { _unit addItemToVest _currentItem };
-                default { GVAR(delayedItems) pushBack _currentItem };
             };
         };
     };

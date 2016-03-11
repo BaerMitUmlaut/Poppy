@@ -5,11 +5,7 @@ _newCommonLoadout = [player] call FUNC(generateLoadoutFromUnit);
 _commonLoadoutDiff = _newCommonLoadout - (_newCommonLoadout arrayIntersect (GVAR(classLoadoutArrays) select 0));
 
 if !(_commonLoadoutDiff isEqualTo []) then {
-    _diffIndexes = [];
-    {
-        _diffIndexes pushBack (_newCommonLoadout find _x);
-        false
-    } count _commonLoadoutDiff;
+    _diffIndexes = _commonLoadoutDiff apply {_newCommonLoadout find _x};
 
     {
         _classLoadout = _x;
