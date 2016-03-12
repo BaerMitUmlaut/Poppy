@@ -23,6 +23,7 @@ The following features are supported by Poppy by default:
 - JIP compatibility
 - Full ACRE and TFAR compatibility
 - Automatic distribution of long range radios with ACRE (coming soon)
+- Automatic 343 channel selection with ACRE (coming soon)
 
 Poppy has a few additonal features which are available for more advanced users:
 - Loadout randomization
@@ -33,20 +34,28 @@ Poppy has a few additonal features which are available for more advanced users:
 
 ### Setup
 The following steps describe how to include Poppy into your mission:
+
 1. Download the latest version of Poppy from the
    [releases page](https://github.com/BaerMitUmlaut/Poppy/releases).
-2. Open your mission's folder, usually found at  
-   `MyDocuments\Arma 3 - Other Profiles\<profile name>\missions\<mission name>.<map name>`.
+2. Open your mission's folder, usually found at
+
+    ```
+    MyDocuments\Arma 3 - Other Profiles\<profile name>\missions\<mission name>.<map name>`.
+    ```
+    
 3. Copy the Poppy folder into your mission's folder.
 4. If you haven't already, create a `description.ext` file in your mission's
    folder. Add the following lines to it:
+
     ```
     #include "Poppy\CfgPoppy.hpp"
     class CfgFunctions {
-        #include "W_FRAMEWORK\CfgFunctions.hpp"
+        #include "Poppy\CfgFunctions.hpp"
     };
     ```
+
 5. Your folder structure should now look like this:
+
     ```
     <mission name>.<map name>
     ├── Poppy
@@ -60,6 +69,7 @@ The following steps describe how to include Poppy into your mission:
     ├── description.ext
     └── mission.sqm
     ```
+
    If there are differences between the above folder structure and your folder
    structure, fix them now or your game might crash (thanks BI).
 6. If you have your mission already open in the editor, reopen it so it
@@ -68,6 +78,7 @@ The following steps describe how to include Poppy into your mission:
 ### Creating basic loadouts
 In this section you will learn how to create loadouts from scratch without any
 technical knowledge about Poppy. Simply follow these steps:
+
 1. Place down all playable units you want to have in your mission and make sure
    there is one unit marked as player. Note that Poppy will ignore any
    non-playable/non-player units.
@@ -81,8 +92,8 @@ technical knowledge about Poppy. Simply follow these steps:
    next to it. This will show what unit type you are currently editing. If you
    just opened up the arsenal it will say "CommonBlufor" or "CommonOpfor" and
    so on. When you edit this "common" loadout, any changes you make will be
-   applied to all units. This is extremly useful for defining the uniform all
-   units use.
+   applied to all units. This is extremly useful for defining the uniform,
+   vest or weapon (almost) all of your units use.
 5. You should now select the loadout that is almost the same for all units.
    This will most likely include the uniform, the vest, grenades, medical gear
    and so on.
@@ -90,7 +101,7 @@ technical knowledge about Poppy. Simply follow these steps:
    is shown in the box above.
 7. Note that items and magazines might have been resorted in your vest, uniform
    and backback. The amount of items and magazines however will remain the
-   same.
+   same as in the common loadout.
 8. Once you have equipped all units, simply close the arsenal. Poppy will show
    a message in the bottom right, informing you that the loadout has been
    copied to your clipboard.
@@ -98,10 +109,11 @@ technical knowledge about Poppy. Simply follow these steps:
    press Ctrl + V to paste the loadout. Make sure to save the file.
 10. Reopen your mission in the editor and hit preview again. All playable units
     will now have the loadouts you created earlier.
-11. If you want to change something about your loadouts, you can select the
-    "Configure loadouts" option in your action menu at any point. However, you
-    need to make sure you ovewrite any loadout configs instead of just adding
-    the config below the old one.
+
+If you want to change something about your loadouts, you can select the
+"Configure loadouts" option in your action menu at any point. However, you need
+to make sure you ovewrite any loadout configs instead of just adding the config
+below the old one.
 
 ### Loadouts for advanced users
 Poppy uses a loadout config. This means you will need to create some very basic
@@ -145,17 +157,15 @@ There are a few special entries:
 - **primary[]**  
   Primary takes a special format to support attachments:  
   `{"weapon", "attachment", "attachment", "attachment"}`  
-  Multiple of these subarrays are supported. You only need need to fill this
+  Multiple of these subarrays are supported. You only need to fill this
   array with the attachment slots you use.
 - **secondary[]**  
   Same as *primary*.
 - **launcher[]**  
   Same as *primary*.
-- **secondary[]**  
-  Same as *primary*.
 - **magazines[]**  
   Magazines does not support randomness for obvious reasons. Additionally, you
-  can simplify your loadouts by using
+  can simplify your loadouts by using  
   `..., <magazine class name>, <amount of magazines>,...`.
 - **items[]**  
   Same as *magazines*.
