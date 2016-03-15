@@ -27,7 +27,7 @@ _units append switchableUnits;
 {
     if (local _x) then {
         _className = typeOf _x;
-        _sideConfig = [side _x] call FUNC(getSideConfig);
+        _sideConfig = [side group _x] call FUNC(getSideConfig);
 
         if (isClass (_config >> _className)) then {
             if !(_className isKindOf [_sideConfig, _config]) then {

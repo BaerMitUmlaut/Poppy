@@ -21,7 +21,7 @@ _availableClasses = [];
 } count switchableUnits;
 
 if (isNil QGVAR(availableClasses)) then {
-    GVAR(availableClasses) = [[side player] call FUNC(getSideConfig)];
+    GVAR(availableClasses) = [[side group player] call FUNC(getSideConfig)];
     GVAR(availableClasses) append _availableClasses;
 
     GVAR(classLoadoutArrays) = [[GVAR(availableClasses) select 0] call FUNC(generateLoadoutFromConfig)];
@@ -33,7 +33,7 @@ if (isNil QGVAR(availableClasses)) then {
     } count switchableUnits;
 };
 
-_sideConfig = [side player] call FUNC(getSideConfig);
+_sideConfig = [side group player] call FUNC(getSideConfig);
 _cmbClass lbAdd _sideConfig;
 _cmbClass lbSetData [0, _sideConfig];
 for "_i" from 0 to (count _availableClasses) - 1 do {
