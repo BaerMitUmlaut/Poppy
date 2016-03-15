@@ -7,7 +7,7 @@ if !(isPlayer _unit) then {
     _unit addItem "ACRE_PRC343";
     switch (true) do {
         case !(_unit canAdd "ACRE_PRC343"):              { GVAR(delayedItems) pushBack "ACRE_PRC343" };
-        case (_unit addItemToUniform "ACRE_PRC343"):     { _unit addItemToUniform "ACRE_PRC343" };
+        case (_unit canAddItemToUniform "ACRE_PRC343"):     { _unit addItemToUniform "ACRE_PRC343" };
         case (_unit canAddItemToBackpack "ACRE_PRC343"): { _unit addItemToBackpack "ACRE_PRC343" };
         case (_unit canAddItemToVest "ACRE_PRC343"):     { _unit addItemToVest "ACRE_PRC343" };
     };
