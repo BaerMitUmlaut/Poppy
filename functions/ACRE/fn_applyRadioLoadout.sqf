@@ -1,8 +1,8 @@
 #include "..\script_component.hpp"
 params ["_unit"];
 
-if !(isPlayer _unit) then {
-    // AI units need to receive a 343 to check if there is enough inventory space for one
+if ((!isMultiplayer) || {!(isPlayer _unit)}) then {
+    // All units need to receive a 343 to check if there is enough inventory space for one
     _unit unlinkItem "ItemRadio";
     _unit addItem "ACRE_PRC343";
     switch (true) do {
