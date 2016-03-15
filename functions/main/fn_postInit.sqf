@@ -1,6 +1,7 @@
 #include "..\script_component.hpp"
 private ["_config", "_units", "_className", "_sideConfig"];
 
+if (isServer) then { [] call FUNC(synchGroupIDs) };
 if (!hasInterface) exitWith {};
 
 // - Setup checks -----------------------------------------
@@ -41,6 +42,8 @@ _units append switchableUnits;
                 ["""" + _className + """ does not have a class specific loadout. Applying default loadout."] call FUNC(logWarning);
             };
         };
+
+        _x selectWeapon (primaryWeapon _x);
     };
 
     false

@@ -10,6 +10,7 @@ class Poppy {
         class logError {};
         class logInfo {};
         class logWarning {};
+        class synchGroupIDs {};
     };
     class ACRE {
         file ="Poppy\functions\ACRE";
