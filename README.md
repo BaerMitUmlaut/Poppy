@@ -22,8 +22,8 @@ The following features are supported by Poppy by default:
 - Detailed Error and Warning messages when mistakes are detected
 - JIP compatibility
 - Full ACRE and TFAR compatibility
-- Automatic distribution of long range radios with ACRE (coming soon)
-- Automatic 343 channel selection with ACRE (coming soon)
+- Automatic distribution of long range radios with ACRE
+- Automatic 343 channel selection with ACRE
 
 Poppy has a few additonal features which are available for more advanced users:
 - Loadout randomization
@@ -136,12 +136,12 @@ class CfgLoadouts {
         headgear[] = {...};
         map[] = {...};
         nvgs[] = {...};
-        radio[] = {...};
         watch[] = {...};
         primary[] = {...};
         secondary[] = {...};
         launcher[] = {...};
         insignia[] = {...};
+        lrRadios[] = {...};
     };
     class <unit class name>: Common<Blufor|Opfor|Independant|Civilian> {
         ...
@@ -169,3 +169,30 @@ There are a few special entries:
   `..., <magazine class name>, <amount of magazines>,...`.
 - **items[]**  
   Same as *magazines*.
+- **lrRadios[]**  
+  This does also not support randomness. All radios within this array will be
+  given to the unit.
+
+### Changing Poppy's settings
+Poppy has a few settings that allow you little bit more customization. You can
+find them in the `CfgPoppy.hpp` file. You can easily change them by editing
+that file. Note that due to how configs work you will have to `0` to disable a
+setting and `1` to enable a setting.
+- **forceShowInfos**  
+  Show info messages in multiplayer.
+- **forceShowWarnings**  
+  Show warning messages in multiplayer.
+- **forceShowErrors**  
+  Show error messages in multiplayer.
+- **showLoadoutInBriefing**  
+  Show the loadout of the player on the briefing screen.
+
+If you're using ACRE, there's a few more settings you can change:
+- **distributeGroupLeaderRadios**  
+  Enabling this will automatically give each group leader a long range radio.
+- **groupLeaderRadio**  
+  This radio will be given to all group leaders if you enabled the setting
+  above.
+- **channelNames[]**  
+  These are the channel names that will be assigned to the long range radio
+  channels, in the given order. These channel names apply to all radio types.
