@@ -1,5 +1,5 @@
 #include "..\script_component.hpp"
-private ["_config", "_units", "_className", "_sideConfig"];
+private ["_config", "_units", "_variableName", "_className", "_sideConfig"];
 
 if (isServer) then { [] call FUNC(synchGroupIDs) };
 if (!hasInterface) exitWith {};
@@ -26,19 +26,28 @@ _units = playableUnits;
 _units append switchableUnits;
 {
     if (local _x) then {
+        _variableName = str _x;
         _className = typeOf _x;
         _sideConfig = [side group _x] call FUNC(getSideConfig);
 
-        if (isClass (_config >> _className)) then {
-            if !(_className isKindOf [_sideConfig, _config]) then {
-                ["The loadout for """ + _className + """ does not inherit from """ + _sideConfig + """."] call FUNC(logWarning);
+        switch (true) do {
+            case (isClass (_config >> _variableName)): {
+                if !(_variableName isKindOf [_sideConfig, _config]) then {
+                    ["The loadout for """ + _variableName + """ does not inherit from """ + _sideConfig + """."] call FUNC(logWarning);
+                };
+                [_x, _variableName] call FUNC(applyLoadout);
             };
-            [_x, _className] call FUNC(applyLoadout);
-        } else {
-            if (isClass (_config >> _sideConfig)) then {
+            case (isClass (_config >> _className)): {
+                if !(_className isKindOf [_sideConfig, _config]) then {
+                    ["The loadout for """ + _className + """ does not inherit from """ + _sideConfig + """."] call FUNC(logWarning);
+                };
+                [_x, _className] call FUNC(applyLoadout);
+            };
+            case (isClass (_config >> _sideConfig)): {
                 ["""" + _className + """ does not have a class specific loadout. Applying """ + _sideConfig + """ loadout."] call FUNC(logWarning);
                 [_x, _sideConfig] call FUNC(applyLoadout);
-            } else {
+            };
+            default {
                 ["""" + _className + """ does not have a class specific loadout. Applying default loadout."] call FUNC(logWarning);
             };
         };
