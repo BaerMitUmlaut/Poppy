@@ -22,8 +22,11 @@ if !(isClass _config) exitWith {
 };
 
 // - Applying loadouts ------------------------------------
-_units = playableUnits;
-_units append switchableUnits;
+_units = if (getNumber (missionConfigFile >> "CfgPoppy" >> "enableAILoadoutsSP") == 1) then {
+    switchableUnits
+} else {
+    [player]
+};
 {
     if (local _x) then {
         _variableName = str _x;

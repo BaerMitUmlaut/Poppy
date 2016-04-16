@@ -42,7 +42,7 @@ The following steps describe how to include Poppy into your mission:
     ```
     MyDocuments\Arma 3 - Other Profiles\<profile name>\missions\<mission name>.<map name>`.
     ```
-    
+
 3. Copy the Poppy folder into your mission's folder.
 4. If you haven't already, create a `description.ext` file in your mission's
    folder. Add the following lines to it:
@@ -186,6 +186,8 @@ setting and `1` to enable a setting.
   Show error messages in multiplayer.
 - **showLoadoutInBriefing**  
   Show the loadout of the player on the briefing screen.
+- **enableAILoadoutsSP**
+  Enables loadouts for playable AI units in singleplayer.
 
 If you're using ACRE, there's a few more settings you can change:
 - **distributeGroupLeaderRadios**  
