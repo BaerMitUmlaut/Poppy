@@ -10,11 +10,12 @@ _magazines append magazines _unit;
 _compass = ""; _gps = ""; _map = ""; _watch = "";
 {
     switch true do {
-        case (_x isKindOf "ItemCompass"): {_compass = _x};
-        case (_x isKindOf "ItemGPS"): {_gps = _x};
-        case (_x isKindOf "ItemMap"): {_map = _x};
-        case (_x isKindOf "ItemWatch"): {_watch = _x};
+        case (_x isKindOf ["ItemCompass", configFile >> "CfgWeapons"]): {_compass = _x};
+        case (_x isKindOf ["ItemGPS", configFile >> "CfgWeapons"]): {_gps = _x};
+        case (_x isKindOf ["ItemMap", configFile >> "CfgWeapons"]): {_map = _x};
+        case (_x isKindOf ["ItemWatch", configFile >> "CfgWeapons"]): {_watch = _x};
     };
+    false
 } count (assignedItems _unit);
 
 [
