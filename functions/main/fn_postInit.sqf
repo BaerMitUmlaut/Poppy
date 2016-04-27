@@ -1,5 +1,5 @@
 #include "..\script_component.hpp"
-private ["_config", "_units", "_variableName", "_className", "_sideConfig"];
+private ["_units", "_loadout"];
 
 if (isServer) then { [] call FUNC(synchGroupIDs) };
 if (!hasInterface) exitWith {};
@@ -14,8 +14,8 @@ if !(isClass (missionConfigFile >> "RscPoppyMessageBox")
         + "Because of this error, Poppy will not work properly and "
         + "will now shutdown.");
 };
-_config = missionConfigFile >> "CfgLoadouts";
-if !(isClass _config) exitWith {
+
+if !(isClass (missionConfigFile >> "CfgLoadouts")) exitWith {
     ["Poppy could not find your loadout config."] call FUNC(logError);
     [] spawn FUNC(showMessageBox);
     player addAction ["Configure Loadouts", FUNC(showArsenal), [], 0, false, true];
@@ -29,32 +29,8 @@ _units = if (getNumber (missionConfigFile >> "CfgPoppy" >> "enableAILoadoutsSP")
 };
 {
     if (local _x) then {
-        _variableName = str _x;
-        _className = typeOf _x;
-        _sideConfig = [side group _x] call FUNC(getSideConfig);
-
-        switch (true) do {
-            case (isClass (_config >> _variableName)): {
-                if !(_variableName isKindOf [_sideConfig, _config]) then {
-                    ["The loadout for """ + _variableName + """ does not inherit from """ + _sideConfig + """."] call FUNC(logWarning);
-                };
-                [_x, _variableName] call FUNC(applyLoadout);
-            };
-            case (isClass (_config >> _className)): {
-                if !(_className isKindOf [_sideConfig, _config]) then {
-                    ["The loadout for """ + _className + """ does not inherit from """ + _sideConfig + """."] call FUNC(logWarning);
-                };
-                [_x, _className] call FUNC(applyLoadout);
-            };
-            case (isClass (_config >> _sideConfig)): {
-                ["""" + _className + """ does not have a class specific loadout. Applying """ + _sideConfig + """ loadout."] call FUNC(logWarning);
-                [_x, _sideConfig] call FUNC(applyLoadout);
-            };
-            default {
-                ["""" + _className + """ does not have a class specific loadout. Applying default loadout."] call FUNC(logWarning);
-            };
-        };
-
+        _loadout = [_x] call FUNC(selectLoadout);
+        [_x, _loadout] call FUNC(applyLoadout);
         _x selectWeapon (primaryWeapon _x);
     };
 
