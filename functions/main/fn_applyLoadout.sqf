@@ -34,3 +34,5 @@ if (GVAR(usesACRE)) then {
     };
     false
 } count GVAR(delayedItems);
+
+_unit selectWeapon (primaryWeapon _unit);

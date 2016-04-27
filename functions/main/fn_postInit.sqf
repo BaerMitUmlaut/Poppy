@@ -31,7 +31,6 @@ _units = if (getNumber (missionConfigFile >> "CfgPoppy" >> "enableAILoadoutsSP")
     if (local _x) then {
         _loadout = [_x] call FUNC(selectLoadout);
         [_x, _loadout] call FUNC(applyLoadout);
-        _x selectWeapon (primaryWeapon _x);
     };
 
     false
