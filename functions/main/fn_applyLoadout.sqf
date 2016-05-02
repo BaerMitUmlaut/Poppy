@@ -36,3 +36,7 @@ if (GVAR(usesACRE)) then {
 } count GVAR(delayedItems);
 
 _unit selectWeapon (primaryWeapon _unit);
+
+if (_loadConfig) then {
+    [_unit, _loadout] call compile (getText (_config >> "postLoadout"));
+};
