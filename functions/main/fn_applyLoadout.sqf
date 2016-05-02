@@ -8,6 +8,10 @@ if (_loadConfig) then {
     _config = missionConfigFile >> "CfgLoadouts" >> _loadout;
 };
 
+if (_loadConfig) then {
+    [_unit, _loadout] call compile (getText (_config >> "preLoadout"));
+};
+
 GVAR(delayedItems) = [];
 {
     _function = missionNamespace getVariable (QUOTE(TRIPLES(PREFIX,fnc,replace)) + _x);
