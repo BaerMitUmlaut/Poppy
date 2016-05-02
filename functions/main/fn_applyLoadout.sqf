@@ -14,7 +14,7 @@ if (_loadConfig) then {
 
 GVAR(delayedItems) = [];
 {
-    _function = missionNamespace getVariable (QUOTE(TRIPLES(PREFIX,fnc,replace)) + _x);
+    _function = missionNamespace getVariable (QFUNC(replace) + _x);
     if (_loadConfig) then {
         if (isArray (_config >> _x)) then {
             [_unit, getArray (_config >> _x)] call _function;
