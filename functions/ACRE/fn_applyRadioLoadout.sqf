@@ -4,10 +4,9 @@ params ["_unit"];
 if ((!isMultiplayer) || {!(isPlayer _unit)}) then {
     // All units need to receive a 343 to check if there is enough inventory space for one
     _unit unlinkItem "ItemRadio";
-    _unit addItem "ACRE_PRC343";
     switch (true) do {
         case !(_unit canAdd "ACRE_PRC343"):              { GVAR(delayedItems) pushBack "ACRE_PRC343" };
-        case (_unit canAddItemToUniform "ACRE_PRC343"):     { _unit addItemToUniform "ACRE_PRC343" };
+        case (_unit canAddItemToUniform "ACRE_PRC343"):  { _unit addItemToUniform "ACRE_PRC343" };
         case (_unit canAddItemToBackpack "ACRE_PRC343"): { _unit addItemToBackpack "ACRE_PRC343" };
         case (_unit canAddItemToVest "ACRE_PRC343"):     { _unit addItemToVest "ACRE_PRC343" };
     };
