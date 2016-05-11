@@ -1,5 +1,5 @@
 #include "..\script_component.hpp"
-params ["_unit"];
+params ["_unit", "_loadout"];
 
 if ((!isMultiplayer) || {!(isPlayer _unit)}) then {
     // All units need to receive a 343 to check if there is enough inventory space for one
@@ -12,7 +12,7 @@ if ((!isMultiplayer) || {!(isPlayer _unit)}) then {
     };
 };
 
-private _config = missionConfigFile >> "CfgLoadouts" >> typeOf _unit;
+private _config = missionConfigFile >> "CfgLoadouts" >> _loadout;
 if (isArray (_config >> "lrRadios") && {!(getArray (_config >> "lrRadios") isEqualTo [""])}) exitWith {
     [_unit, getArray (_config >> "lrRadios")] call FUNC(addLRRadios);
 };

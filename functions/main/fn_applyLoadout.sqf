@@ -26,7 +26,7 @@ GVAR(delayedItems) = [];
 
 if (GVAR(usesACRE)) then {
     [_unit] spawn FUNC(setupRadios);
-    [_unit] call FUNC(applyRadioLoadout);
+    [_unit, _loadout] call FUNC(applyRadioLoadout);
 };
 
 // Delayed items
