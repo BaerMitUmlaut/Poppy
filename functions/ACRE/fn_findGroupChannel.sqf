@@ -1,6 +1,6 @@
 #include "..\script_component.hpp"
 params ["_unit"];
-private ["_missionSQM", "_sideGroups", "_groupIDs", "_groupOffsets", "_groupOffsetsSorted", "_unitGroupIndex", "_unitGroupOffset", "_result"];
+private ["_missionSQM", "_sideGroups", "_groupOffsets", "_channel"];
 
 _missionSQM = loadFile "mission.sqm";
 if (count _missionSQM >= 9999999) exitWith {
@@ -9,13 +9,14 @@ if (count _missionSQM >= 9999999) exitWith {
 };
 
 _sideGroups = allGroups select {side _x == side group _unit};
-_groupIDs = _sideGroups apply {groupID _x};
-_groupOffsets = _groupIDs apply {_missionSQM find _x};
-_groupOffsetsSorted = +_groupOffsets;
-_groupOffsetsSorted sort true;
-_unitGroupIndex = _sideGroups find (group _unit);
-_unitGroupOffset = _groupOffsets select _unitGroupIndex;
+_groupOffsets = _sideGroups apply {[_missionSQM find groupID _x, _x]};
+_groupOffsets sort true;
+_channel = {
+    _x params ["_index", "_group"];
+    if ((_group == group _unit) && {_index != -1}) exitWith {
+        _forEachIndex + 1
+    };
+    1
+} forEach _groupOffsets;
 
-_result = (_groupOffsetsSorted find _unitGroupOffset) + 1;
-if (_result < 1) then { _result = 1 };
-_result
+_channel
