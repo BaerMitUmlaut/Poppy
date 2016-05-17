@@ -1,10 +1,10 @@
 #include "..\script_component.hpp"
-params ["_unit"];
+params [["_unit", objNull]];
 
 // - Shortrange -------------------------------------------
 if (isPlayer _unit) then {
     _unit spawn {
-        waitUntil {[] call acre_api_fnc_isInitialized};
+        waitUntil {!isNil (["ACRE_PRC343"] call acre_api_fnc_getRadioByType)};
         private _srChannel = [_this] call FUNC(findGroupChannel);
         [["ACRE_PRC343"] call acre_api_fnc_getRadioByType, _srChannel] call acre_api_fnc_setRadioChannel;
     };

@@ -1,7 +1,10 @@
 #include "..\script_component.hpp"
 private ["_units", "_loadout"];
 
-if (isServer) then { [] call FUNC(synchGroupIDs) };
+if (isServer) then {
+    [] call FUNC(synchGroupIDs);
+    if (GVAR(usesACRE)) then { [] call FUNC(setupRadios) };
+};
 if (!hasInterface) exitWith {};
 
 // - Setup checks -----------------------------------------
