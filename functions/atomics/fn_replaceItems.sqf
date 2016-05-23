@@ -4,9 +4,22 @@ private ["_arrayCount", "_currentItem"];
 
 _arrayCount = count _array;
 {
-    if !(_x isKindOf ["ACRE_PRC343", configFile >> "CfgWeapons"]) then {
-        _unit removeItem _x;
+    switch (true) do {
+        case (GVAR(usesACRE)): {
+            if !(_x == "ItemRadio" || {_x isKindOf ["ACRE_PRC343", configFile >> "CfgWeapons"]}) then {
+                _unit removeItem _x;
+            };
+        };
+        case (GVAR(usesTFAR)): {
+            if !(_x isKindOf ["ItemRadio", configFile >> "CfgWeapons"]) then {
+                _unit removeItem _x;
+            };
+        };
+        default {
+            _unit removeItem _x;
+        };
     };
+
     false
 } count (items _unit);
 if (_array isEqualTo [""]) exitWith {};
