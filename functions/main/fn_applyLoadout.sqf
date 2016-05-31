@@ -12,7 +12,7 @@ if (_loadConfig) then {
     [_unit, _loadout] call compile (getText (_config >> "preLoadout"));
 };
 
-GVAR(delayedItems) = [];
+GVAR(overflowItems) = [];
 {
     _function = missionNamespace getVariable (QFUNC(replace) + _x);
     if (_loadConfig) then {
@@ -37,7 +37,7 @@ if (GVAR(usesACRE)) then {
         ["Inventory full! Could not add """ + _x + """ to """ + (typeOf _unit) + """."] call FUNC(logWarning);
     };
     false
-} count GVAR(delayedItems);
+} count GVAR(overflowItems);
 
 _unit selectWeapon (primaryWeapon _unit);
 

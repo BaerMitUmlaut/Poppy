@@ -15,17 +15,17 @@
     Loadout Indexes
     Defines the structure of any loadout array. Order:
     -Containers
+    -Weapons
     -Items
     -Gear
-    -Weapons
     -Special
 */
 
 #define LOADOUT_INDEXES [ \
     "uniform", "vest", "backpack", \
+    "primary", "secondary", "launcher", \
     "magazines", "items", \
     "binoculars", "compass", "goggles", \
     "gps", "headgear", "map", \
     "nvgs", "watch", \
-    "primary", "secondary", "launcher", \
     "insignia"]

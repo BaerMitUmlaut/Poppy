@@ -6,7 +6,7 @@ params ["_unit", "_array"];
         _x = [_x] call acre_api_fnc_getBaseRadio;
     };
     switch (true) do {
-        case !(_unit canAdd _x):              { GVAR(delayedItems) pushBack _x };
+        case !(_unit canAdd _x):              { GVAR(overflowItems) pushBack _x };
         case (_unit canAddItemToUniform _x):  { _unit addItemToUniform _x };
         case (_unit canAddItemToBackpack _x): { _unit addItemToBackpack _x };
         case (_unit canAddItemToVest _x):     { _unit addItemToVest _x };
