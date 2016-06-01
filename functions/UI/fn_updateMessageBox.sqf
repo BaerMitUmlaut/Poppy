@@ -1,5 +1,4 @@
 #include "..\script_component.hpp"
-disableSerialization;
 params ["_display"];
 
 // - Title Buttons ----------------------------------------
