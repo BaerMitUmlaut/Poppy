@@ -44,7 +44,7 @@ if (getNumber (missionConfigFile >> "CfgPoppy" >> "showLoadoutInBriefing") == 1)
     [] call FUNC(createBriefingEntry);
 };
 
-if (!isMultiplayer) then {
+if (!isMultiplayer || {is3DENMultiplayer}) then {
     player addAction ["Configure Loadouts", FUNC(showArsenal), [], 0, false, true];
 };
 
