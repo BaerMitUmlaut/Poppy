@@ -5,12 +5,13 @@ private ["_arrayCount", "_currentItem"];
 _arrayCount = count _array;
 {
     switch (true) do {
-        case (GVAR(usesACRE)): {
-            if !(_x == "ItemRadio" || {_x isKindOf ["ACRE_PRC343", configFile >> "CfgWeapons"]}) then {
+        case GVAR(usesACRE): {
+            // TODO: substring might be substantially faster
+            if !(_x in ["ItemRadio", "ItemRadioAcreFlagged"] || {_x isKindOf ["ACRE_PRC343", configFile >> "CfgWeapons"]}) then {
                 _unit removeItem _x;
             };
         };
-        case (GVAR(usesTFAR)): {
+        case GVAR(usesTFAR): {
             if !(_x isKindOf ["ItemRadio", configFile >> "CfgWeapons"]) then {
                 _unit removeItem _x;
             };
