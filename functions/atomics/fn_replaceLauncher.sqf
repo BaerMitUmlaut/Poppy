@@ -13,4 +13,5 @@ if (_gun != secondaryWeapon _unit) then {
 };
 
 { _unit removeSecondaryWeaponItem _x; false } count (secondaryWeaponItems _unit);
+{ _unit removeSecondaryWeaponItem _x; false } count (secondaryWeaponMagazine _unit);
 { _unit addSecondaryWeaponItem _x; false } count [_attachment0, _attachment1, _attachment2];

@@ -13,4 +13,5 @@ if (_gun != primaryWeapon _unit) then {
 };
 
 removeAllPrimaryWeaponItems _unit;
+{ _unit removePrimaryWeaponItem _x; false } count (primaryWeaponMagazine _unit);
 { _unit addPrimaryWeaponItem _x; false } count [_attachment0, _attachment1, _attachment2];

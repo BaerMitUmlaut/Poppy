@@ -13,4 +13,5 @@ if (_gun != handgunWeapon _unit) then {
 };
 
 removeAllHandgunItems _unit;
+{ _unit removeHandgunItem _x; false } count (handgunMagazine _unit);
 { _unit addHandgunItem _x; false } count [_attachment0, _attachment1, _attachment2];
