@@ -25,16 +25,18 @@ if !(isClass (missionConfigFile >> "CfgLoadouts")) exitWith {
 };
 
 // - Applying loadouts ------------------------------------
-_units = if (getNumber (missionConfigFile >> "CfgPoppy" >> "enableAILoadoutsSP") == 1) then {
-    switchableUnits
-} else {
+_units = if (isMultiplayer && {!is3DENMultiplayer}) then {
     [player]
+} else {
+    if (getNumber (missionConfigFile >> "CfgPoppy" >> "enableAILoadoutsSP") == 1) then {
+        switchableUnits select {local _x}
+    } else {
+        [player]
+    };
 };
 {
-    if (local _x) then {
-        _loadout = [_x] call FUNC(selectLoadout);
-        [_x, _loadout] call FUNC(applyLoadout);
-    };
+    _loadout = [_x] call FUNC(selectLoadout);
+    [_x, _loadout] call FUNC(applyLoadout);
 
     false
 } count _units;
