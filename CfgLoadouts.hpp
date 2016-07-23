@@ -1,7 +1,7 @@
 class CfgLoadouts {
     class CommonBlufor {
         uniform[] = {"TFA_green_tiger", "TFA_green_tiger_rs"};
-        backback[] = {""};
+        backpack[] = {""};
         vest[] = {"TFAx_PlateCarrierH_Grn"};
         headgear[] = {"TFA_Mich_Green", "TFA_Mich_Black"};
         goggles[] = {""};
