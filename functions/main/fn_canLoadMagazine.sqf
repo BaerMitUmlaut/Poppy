@@ -20,18 +20,18 @@ private ["_compatibleMagazines"];
     };
 
     _altMuzzle = (getArray (configfile >> "CfgWeapons" >> _weapon >> "muzzles")) param [1, ""];
-    if (_altMuzzle == "") exitWith {""}; // No alt muzzle available
+    if (_altMuzzle != "") then {
+        _compatibleMagazines = getArray (configfile >> "CfgWeapons" >> _weapon >> _altMuzzle >> "magazines");
+        _compatibleMagazines = _compatibleMagazines apply {toLower _x};
 
-    _compatibleMagazines = getArray (configfile >> "CfgWeapons" >> _weapon >> _altMuzzle >> "magazines");
-    _compatibleMagazines = _compatibleMagazines apply {toLower _x};
-
-    if ((toLower _magazine) in _compatibleMagazines) exitWith {
-        // Magazine belongs to secondary muzzle
-        // Check if last loaded magazine is also in last muzzle
-        if ((toLower (_loadedMagazines param [count _loadedMagazines - 1, ""])) in _compatibleMagazines) then {
-            ""
-        } else {
-            _weapon
+        if ((toLower _magazine) in _compatibleMagazines) exitWith {
+            // Magazine belongs to secondary muzzle
+            // Check if last loaded magazine is also in last muzzle
+            if ((toLower (_loadedMagazines param [count _loadedMagazines - 1, ""])) in _compatibleMagazines) then {
+                ""
+            } else {
+                _weapon
+            };
         };
     };
 
