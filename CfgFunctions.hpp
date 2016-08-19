@@ -8,7 +8,6 @@ class Poppy {
         class createBriefingEntry {};
         class findLoadableWeapon {};
         class getSideConfig {};
-        class loadMagazine {};
         class logError {};
         class logInfo {};
         class logWarning {};
