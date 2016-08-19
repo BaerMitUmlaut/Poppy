@@ -20,7 +20,7 @@ if !(isClass (missionConfigFile >> "RscPoppyMessageBox")
 
 if !(isClass (missionConfigFile >> "CfgLoadouts")) exitWith {
     ["Poppy could not find your loadout config."] call FUNC(logError);
-    [] spawn FUNC(showMessageBox);
+    [] call FUNC(showMessageBox);
     player addAction ["Configure Loadouts", FUNC(showArsenal), [], 0, false, true];
 };
 
@@ -51,5 +51,5 @@ if (GVAR(inDevMode)) then {
 };
 
 if (count GVAR(log) > 0) then {
-    [] spawn FUNC(showMessageBox);
+    [] call FUNC(showMessageBox);
 };
