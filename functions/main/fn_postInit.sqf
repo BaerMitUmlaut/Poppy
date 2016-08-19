@@ -24,23 +24,6 @@ if !(isClass (missionConfigFile >> "CfgLoadouts")) exitWith {
     player addAction ["Configure Loadouts", FUNC(showArsenal), [], 0, false, true];
 };
 
-// - Applying loadouts ------------------------------------
-_units = if (isMultiplayer && {!is3DENMultiplayer}) then {
-    [player]
-} else {
-    if (getNumber (missionConfigFile >> "CfgPoppy" >> "enableAILoadoutsSP") == 1) then {
-        switchableUnits select {local _x}
-    } else {
-        [player]
-    };
-};
-{
-    _loadout = [_x] call FUNC(selectLoadout);
-    [_x, _loadout] call FUNC(applyLoadout);
-
-    false
-} count _units;
-
 // - Misc -------------------------------------------------
 if (getNumber (missionConfigFile >> "CfgPoppy" >> "showLoadoutInBriefing") == 1) then {
     [] call FUNC(createBriefingEntry);
