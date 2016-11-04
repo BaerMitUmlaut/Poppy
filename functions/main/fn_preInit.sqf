@@ -6,6 +6,7 @@ GVAR(log) = [];
 GVAR(usesACRE) = isClass (configFile >> "CfgPatches" >> "acre_sys_core");
 GVAR(usesTFAR) = isClass (configFile >> "CfgPatches" >> "task_force_radio");
 GVAR(inDevMode) = !isMultiplayer || {is3DENMultiplayer};
+GVAR(groupIDsSynched) = false;
 
 if (isClass (missionConfigFile >> "CfgLoadouts")) then {
     ["CAManBase", "InitPost", {
