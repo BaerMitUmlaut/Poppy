@@ -1,6 +1,6 @@
 #include "..\script_component.hpp"
 params ["_unit", "_loadout"];
-private ["_loadConfig", "_config", "_loadoutArray", "_function"];
+private ["_loadConfig", "_config", "_loadoutArray", "_function", "_uniqueRadio"];
 
 _loadConfig = _loadout isEqualType "";
 _config = configNull;
@@ -8,6 +8,8 @@ if (_loadConfig) then {
     _config = missionConfigFile >> "CfgLoadouts" >> _loadout;
     [_unit, _loadout] call compile (getText (_config >> "preLoadout"));
 };
+
+_uniqueRadio = [_unit] call FUNC(getUniqueRadio);
 
 GVAR(overflowItems) = [];
 if (_loadConfig) then {
@@ -23,6 +25,8 @@ if (_loadConfig) then {
         [_unit, _loadout select _forEachIndex] call _function;
     } forEach LOADOUT_INDEXES;
 };
+
+[_unit, _uniqueRadio] call FUNC(setUniqueRadio);
 
 if (GVAR(usesACRE)) then {
     [_unit] call FUNC(setupRadios);
