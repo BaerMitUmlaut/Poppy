@@ -12,7 +12,7 @@ if (isClass (missionConfigFile >> "CfgLoadouts")) then {
         params ["_unit"];
         if (!local _unit) exitWith {};
 
-        if (isPlayer _unit) then {
+        if (_unit == player) then {
             private _loadout = [_unit] call FUNC(selectLoadout);
             [_unit, _loadout] call FUNC(applyLoadout);
         } else {
