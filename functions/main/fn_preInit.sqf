@@ -16,6 +16,10 @@ if (isClass (missionConfigFile >> "CfgLoadouts")) then {
         if (_unit == player) then {
             private _loadout = [_unit] call FUNC(selectLoadout);
             [_unit, _loadout] call FUNC(applyLoadout);
+
+            if (getNumber (missionConfigFile >> "CfgPoppy" >> "showLoadoutInBriefing") == 1) then {
+                [] call FUNC(createBriefingEntry);
+            };
         } else {
             if (
                 GVAR(inDevMode)
