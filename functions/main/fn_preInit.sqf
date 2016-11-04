@@ -31,6 +31,15 @@ if (isClass (missionConfigFile >> "CfgLoadouts")) then {
             };
         };
     }] call CBA_fnc_addClassEventHandler;
+
+    ["CAManBase", "Respawn", {
+        params ["_unit"];
+
+        if (_unit == player) then {
+            private _loadout = [_unit] call FUNC(selectLoadout);
+            [_unit, _loadout] call FUNC(applyLoadout);
+        };
+    }] call CBA_fnc_addClassEventHandler;
 };
 
 Poppy = true;
