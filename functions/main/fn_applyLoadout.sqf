@@ -36,6 +36,7 @@ if (GVAR(usesACRE)) then {
 // Items not fitting into inventory
 {
     ["Inventory full! Could not add """ + _x + """ to """ + (typeOf _unit) + """."] call FUNC(logWarning);
+    false
 } count GVAR(overflowItems);
 
 _unit selectWeapon (primaryWeapon _unit);
