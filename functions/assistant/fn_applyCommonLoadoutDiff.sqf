@@ -1,18 +1,19 @@
 #include "..\script_component.hpp"
-private ["_newCommonLoadout", "_commonLoadoutDiff", "_diffIndexes", "_classLoadout"];
 
-_newCommonLoadout = [player] call FUNC(generateLoadoutFromUnit);
-_commonLoadoutDiff = _newCommonLoadout - (_newCommonLoadout arrayIntersect (GVAR(classLoadoutArrays) select 0));
+private _oldCommon = GVAR(classLoadoutArrays) select 0;
+private _newCommon = [player] call FUNC(generateLoadoutFromUnit);
+private _diff = [];
 
-if !(_commonLoadoutDiff isEqualTo []) then {
-    _diffIndexes = _commonLoadoutDiff apply {_newCommonLoadout find _x};
+{
+    if !((_oldCommon select _forEachIndex) isEqualTo (_newCommon select _forEachIndex)) then {
+        _diff pushBack [_forEachIndex, _newCommon select _forEachIndex];
+    };
+} forEach LOADOUT_INDEXES;
 
+{
+    private _loadoutArray = _x;
     {
-        _classLoadout = _x;
-        {
-            _classLoadout set [_x, _newCommonLoadout select _x];
-            false
-        } count _diffIndexes;
-        GVAR(classLoadoutArrays) set [_forEachIndex, _classLoadout];
-    } forEach GVAR(classLoadoutArrays);
-};
+        _x params ["_index", "_value"];
+        _loadoutArray set [_index, _value];
+    } forEach _diff;
+} forEach GVAR(classLoadoutArrays);
