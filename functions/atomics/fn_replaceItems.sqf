@@ -9,7 +9,7 @@ _arrayCount = count _array;
 for "_i" from 0 to (_arrayCount - 1) do {
     _currentItem = _array select _i;
 
-    if ((_i + 1 < _arrayCount) && {typeName (_array select (_i + 1)) == "SCALAR"}) then {
+    if ((_i + 1 < _arrayCount) && {(_array select (_i + 1)) isEqualType 0}) then {
         for "_j" from 1 to (_array select (_i + 1)) do {
             switch (true) do {
                 case !(_unit canAdd _currentItem):              { GVAR(overflowItems) pushBack _currentItem };

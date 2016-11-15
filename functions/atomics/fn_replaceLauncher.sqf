@@ -1,7 +1,7 @@
 #include "..\script_component.hpp"
 params ["_unit", "_array"];
 
-if (typeName (_array select 0) == "ARRAY") then {
+if ((_array select 0) isEqualType []) then {
     _array = selectRandom _array;
 };
 

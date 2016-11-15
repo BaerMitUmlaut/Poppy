@@ -9,7 +9,7 @@ if (_array isEqualTo [""]) exitWith {};
 for "_i" from 0 to (_arrayCount - 1) do {
     _currentItem = _array select _i;
 
-    if ((_i + 1 < _arrayCount) && {typeName (_array select (_i + 1)) == "SCALAR"}) then {
+    if ((_i + 1 < _arrayCount) && {(_array select (_i + 1)) isEqualType 0}) then {
         _itemCount = _array select (_i + 1);
 
         private _loadableWeapon = [_unit, _currentItem] call FUNC(findLoadableWeapon);
