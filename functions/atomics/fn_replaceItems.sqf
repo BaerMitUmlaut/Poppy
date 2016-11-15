@@ -21,7 +21,7 @@ for "_i" from 0 to (_arrayCount - 1) do {
         _i = _i + 1;
     } else {
         if (_currentItem isKindOf ["ItemRadio", configFile >> "CfgWeapons"]) then {
-            [_unit, [_currentItem]] call FUNC(replaceRadio);
+            [_unit, _currentItem] call FUNC(replaceRadio);
         } else {
             switch (true) do {
                 case !(_unit canAdd _currentItem):              { GVAR(overflowItems) pushBack _currentItem };
