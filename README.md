@@ -20,7 +20,7 @@ The following features are supported by Poppy by default:
 - Inventory sorting
 - Automatic creation of briefing entries with the current loadout
 - Detailed Error and Warning messages when mistakes are detected
-- JIP compatibility
+- JIP and respawn compatibility
 - Full ACRE and TFAR compatibility
 - Automatic distribution of long range radios with ACRE
 - Automatic 343 channel selection with ACRE
@@ -28,6 +28,8 @@ The following features are supported by Poppy by default:
 Poppy has a few additonal features which are available for more advanced users:
 - Loadout randomization
 - Simplified loadout configs
+- Executing code before and after applying a certain loadout
+- Single unit specific loadouts
 - AI loadouts (coming soon)
 
 ## Usage
@@ -112,7 +114,7 @@ technical knowledge about Poppy. Simply follow these steps:
 
 If you want to change something about your loadouts, you can select the
 "Configure loadouts" option in your action menu at any point. However, you need
-to make sure you ovewrite any loadout configs instead of just adding the config
+to make sure you overwrite any loadout configs instead of just adding the config
 below the old one.
 
 ### Loadouts for advanced users
@@ -142,14 +144,16 @@ class CfgLoadouts {
         launcher[] = {...};
         insignia[] = {...};
         lrRadios[] = {...};
+        preLoadout = "";
+        postLoadout = "";
     };
-    class <unit class name>: Common<Blufor|Opfor|Independant|Civilian> {
+    class <unit class name|unit variable name>: Common<Blufor|Opfor|Independant|Civilian> {
         ...
     };
 };
 ```
 
-As you can see arrays are used for all config entries. This is for supporting
+As you can see arrays are used for most config entries. This is for supporting
 randomness - almost all config entries support randomness. This means if you
 you have multiple entries, Poppy will select one of them randomly.
 
@@ -172,6 +176,11 @@ There are a few special entries:
 - **lrRadios[]**  
   This does also not support randomness. All radios within this array will be
   given to the unit.
+- **preLoadout**  
+  Can contain code that will be compiled and called with the current unit and
+  the loadout class before applying the loadout.
+- **postLoadout**  
+  Same as *preLoadout*, but called after applying the loadout.
 
 ### Changing Poppy's settings
 Poppy has a few settings that allow you little bit more customization. You can
@@ -186,7 +195,7 @@ setting and `1` to enable a setting.
   Show error messages in multiplayer.
 - **showLoadoutInBriefing**  
   Show the loadout of the player on the briefing screen.
-- **enableAILoadoutsSP**
+- **enableAILoadoutsSP**  
   Enables loadouts for playable AI units in singleplayer.
 
 If you're using ACRE, there's a few more settings you can change:
