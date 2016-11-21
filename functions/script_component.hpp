@@ -1,4 +1,5 @@
 #define PREFIX Poppy
+#define VERSION "1.1.0"
 
 #define QUOTE(var) #var
 #define DOUBLES(var1,var2) ##var1##_##var2
@@ -12,8 +13,6 @@
 #define UNIFORM  {uniformContainer  _this}
 #define VEST     {vestContainer     _this}
 #define BACKPACK {backpackContainer _this}
-
-#define VERSION "1.1.0"
 
 /*
     Loadout Indexes
