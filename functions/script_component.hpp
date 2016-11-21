@@ -9,9 +9,9 @@
 #define FUNC(var)  TRIPLES(PREFIX,fnc,var)
 #define QFUNC(var) QUOTE(FUNC(var))
 
-#define UNIFORM  0
-#define VEST     1
-#define BACKPACK 2
+#define UNIFORM  {uniformContainer  _this}
+#define VEST     {vestContainer     _this}
+#define BACKPACK {backpackContainer _this}
 
 #define VERSION "1.1.0"
 
