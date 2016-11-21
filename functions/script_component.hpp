@@ -14,6 +14,29 @@
 #define VEST     {vestContainer     _this}
 #define BACKPACK {backpackContainer _this}
 
+#define ACE_MEDICAL_ITEMS [ \
+    "ace_atropine", \
+    "ace_bloodiv", \
+    "ace_bloodiv_250", \
+    "ace_bloodiv_500", \
+    "ace_bodybag", \
+    "ace_elasticbandage", \
+    "ace_epinephrine", \
+    "ace_fielddressing", \
+    "ace_morphine", \
+    "ace_packingbandage", \
+    "ace_personalaidkit", \
+    "ace_plasmaiv", \
+    "ace_plasmaiv_250", \
+    "ace_plasmaiv_500", \
+    "ace_quikclot", \
+    "ace_salineiv", \
+    "ace_salineiv_250", \
+    "ace_salineiv_500", \
+    "ace_surgicalkit", \
+    "ace_tourniquet" \
+]
+
 /*
     Loadout Indexes
     Defines the structure of any loadout array. Order:
