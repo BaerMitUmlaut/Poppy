@@ -10,9 +10,4 @@ switch (true) do {
     };
 };
 
-switch (true) do {
-    case !(_unit canAdd _radio):              { GVAR(overflowItems) pushBack _radio };
-    case (_unit canAddItemToUniform _radio):  { _unit addItemToUniform _radio };
-    case (_unit canAddItemToBackpack _radio): { _unit addItemToBackpack _radio };
-    case (_unit canAddItemToVest _radio):     { _unit addItemToVest _radio };
-};
+[_unit, _currentItem, [UNIFORM, BACKPACK, VEST]] call FUNC(addItemSorted);
