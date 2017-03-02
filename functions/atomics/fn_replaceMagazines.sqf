@@ -1,16 +1,15 @@
 #include "..\script_component.hpp"
 params ["_unit", "_array"];
-private ["_arrayCount", "_currentItem", "_itemCount"];
 
-_arrayCount = count _array;
+private _arrayCount = count _array;
 { _unit removeMagazineGlobal _x; } count (magazines _unit);
 if (_array isEqualTo [""]) exitWith {};
 
 for "_i" from 0 to (_arrayCount - 1) do {
-    _currentItem = _array select _i;
+    private _currentItem = _array select _i;
 
     if ((_i + 1 < _arrayCount) && {(_array select (_i + 1)) isEqualType 0}) then {
-        _itemCount = _array select (_i + 1);
+        private _itemCount = _array select (_i + 1);
 
         private _loadableWeapon = [_unit, _currentItem] call FUNC(findLoadableWeapon);
         if (_loadableWeapon != "") then {

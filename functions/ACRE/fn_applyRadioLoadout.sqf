@@ -8,7 +8,7 @@ if (_loadout isEqualType "") then {
     };
 };
 
-_config = missionConfigFile >> "CfgPoppy" >> "ACRE";
+private _config = missionConfigFile >> "CfgPoppy" >> "ACRE";
 if ((leader _unit == _unit) && {getNumber (_config >> "distributeGroupLeaderRadios") == 1}) exitWith {
     if (isText (_config >> "groupLeaderRadio")) then {
         [_unit, [getText (_config >> "groupLeaderRadio")]] call FUNC(addLRRadios);

@@ -1,19 +1,21 @@
 #include "..\script_component.hpp"
 params ["_unit"];
-private ["_magazines", "_compass", "_gps", "_map", "_watch"];
 
-_magazines = primaryWeaponMagazine _unit;
+private _magazines = primaryWeaponMagazine _unit;
 _magazines append handgunMagazine _unit;
 _magazines append secondaryWeaponMagazine _unit;
 _magazines append magazines _unit;
 
-_compass = ""; _gps = ""; _map = ""; _watch = "";
+private _compass = "";
+private _gps     = "";
+private _map     = "";
+private _watch   = "";
 {
     switch true do {
         case (_x isKindOf ["ItemCompass", configFile >> "CfgWeapons"]): {_compass = _x};
-        case (_x isKindOf ["ItemGPS", configFile >> "CfgWeapons"]): {_gps = _x};
-        case (_x isKindOf ["ItemMap", configFile >> "CfgWeapons"]): {_map = _x};
-        case (_x isKindOf ["ItemWatch", configFile >> "CfgWeapons"]): {_watch = _x};
+        case (_x isKindOf ["ItemGPS",     configFile >> "CfgWeapons"]): {_gps     = _x};
+        case (_x isKindOf ["ItemMap",     configFile >> "CfgWeapons"]): {_map     = _x};
+        case (_x isKindOf ["ItemWatch",   configFile >> "CfgWeapons"]): {_watch   = _x};
     };
     false
 } count (assignedItems _unit);
