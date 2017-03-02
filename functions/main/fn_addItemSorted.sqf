@@ -9,6 +9,6 @@ private _containers = _sorting apply {_unit call _x};
 
 {
     if (_x canAdd _item) exitWith {
-        _x addItem _item;
+        _x addItemCargoGlobal [_item, 1];
     };
 } forEach _containers;
