@@ -10,6 +10,13 @@ private _diff = [];
     };
 } forEach LOADOUT_INDEXES;
 
+if (GVAR(usesACRE)) then {
+    private _index = count LOADOUT_INDEXES;
+    if !((_oldCommon select _index) isEqualTo (_newCommon select _index)) then {
+        _diff pushBack [_index, _newCommon select _index];
+    };
+};
+
 {
     private _loadoutArray = _x;
     {

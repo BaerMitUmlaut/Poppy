@@ -20,12 +20,21 @@ private _watch   = "";
     false
 } count (assignedItems _unit);
 
-[
+private _loadoutArray = [
     [uniform _unit], [vest _unit], [backpack _unit],
     [primaryWeapon _unit] + primaryWeaponItems _unit, [handgunWeapon _unit] + handgunItems _unit, [secondaryWeapon _unit] + secondaryWeaponItems _unit,
-    _magazines, (items _unit) select {!(_x isKindOf ["ItemRadio", configFile >> "CfgWeapons"])},
+    _magazines, (items _unit) select {!GVAR(usesACRE) || {!(_x isKindOf ["ItemRadio", configFile >> "CfgWeapons"])}},
     [binocular _unit], [_compass], [goggles _unit],
     [_gps], [headgear _unit], [_map],
     [hmd _unit], [_watch],
     [_unit getVariable ["bis_fnc_setUnitInsignia_class", ""]]
-] call FUNC(simplifyLoadout)
+];
+
+if (GVAR(usesACRE)) then {
+    private _radios = (items _unit) select {_x isKindOf ["ItemRadio", configFile >> "CfgWeapons"]};
+    _radios = _radios apply {[_x] call acre_api_fnc_getBaseRadio};
+    _radios = _radios - ["ACRE_PRC343"];
+    _loadoutArray pushBack _radios;
+};
+
+_loadoutArray call FUNC(simplifyLoadout)

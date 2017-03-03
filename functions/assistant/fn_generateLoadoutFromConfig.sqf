@@ -13,4 +13,12 @@ private _loadoutArray = [];
     false
 } count LOADOUT_INDEXES;
 
+if (GVAR(usesACRE)) then {
+    if (isArray (_config >> "lrRadios")) then {
+        _loadoutArray pushBack getArray (_config >> "lrRadios");
+    } else {
+        _loadoutArray pushBack [];
+    };
+};
+
 _loadoutArray

@@ -8,7 +8,7 @@ class CfgPoppy {
     //enableAILoadoutsMP = 0;
 
     class ACRE {
-        distributeGroupLeaderRadios = 1;
+        distributeGroupLeaderRadios = 0;
         groupLeaderRadio = "ACRE_PRC152";
         channelNames[] = {"CMDNET", "CAS"};
     };

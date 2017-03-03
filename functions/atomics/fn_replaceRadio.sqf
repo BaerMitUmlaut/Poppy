@@ -10,4 +10,4 @@ switch (true) do {
     };
 };
 
-[_unit, _currentItem, [UNIFORM, BACKPACK, VEST]] call FUNC(addItemSorted);
+[_unit, _radio, [UNIFORM, BACKPACK, VEST]] call FUNC(addItemSorted);

@@ -19,7 +19,6 @@ class Poppy {
     };
     class ACRE {
         file ="Poppy\functions\ACRE";
-        class addLRRadios {};
         class applyRadioLoadout {};
         class findGroupChannel {};
         class setupRadios {};
