@@ -25,6 +25,7 @@ if (isClass (missionConfigFile >> "CfgLoadouts")) then {
             if (
                 GVAR(inDevMode)
                 && {_unit in switchableUnits}
+                && {typeOf _unit != "HeadlessClient_F"}
                 && {getNumber (missionConfigFile >> "CfgPoppy" >> "enableAILoadoutsSP") == 1}
             ) then {
                 private _loadout = [_unit] call FUNC(selectLoadout);
